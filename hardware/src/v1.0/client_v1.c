@@ -6,14 +6,14 @@
 #include <stdio.h>
 #include <unistd.h>
 #include <sys/socket.h>
-#include <bluetooth/bluetooth.h>
-#include <bluetooth/rfcomm.h>
+//#include <bluetooth/bluetooth.h>
+//#include <bluetooth/rfcomm.h>
 #include <string.h>
 #include <stdbool.h>
 #include "./socket_helpers/internalSocketConnect.c"
 #include "./help/help_menu.h"
 #include "./buff_logic/buff_read.h"
-#include "./socket_helpers/bluetoothSocketConnect.h"
+//#include "./socket_helpers/bluetoothSocketConnect.h"
 
 
 
@@ -35,7 +35,7 @@ int main(int argc, char *argv[])
         {
             loopFlag = 1;
         }
-        sConn = bluetoothConnect();
+        //sConn = bluetoothConnect();
         if(sConn == 0){
             return 0;
         }   
