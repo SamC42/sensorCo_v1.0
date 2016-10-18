@@ -1,0 +1,4 @@
+socat -d -d pty,raw,echo=0 pty,raw,echo=0
+cat < /dev/pts/10
+sudo echo "Test" > /dev/pts/11
+

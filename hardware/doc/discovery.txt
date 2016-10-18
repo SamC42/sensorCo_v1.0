@@ -1,0 +1,58 @@
+Bluetooth Module: HC-06 Bluetooth
+
+RF Module from Tinkersphere
+
+
+
+
+Raspberry Pi 2 Model B v1.1 
+
+GPIO:
+
+https://www.raspberrypi.org/documentation/usage/gpio-plus-and-raspi2/
+
+Pin: 1  = 3v3 Power
+     8  = BCM 14 (TXD)
+     10 = BCM 15 (RXD)
+     14 = Ground
+
+
+Steps: Connect Bluetooth to RPi pins above
+1. edit /boot/cmdline.txt replace 115200 with 9600
+2. sudo reboot
+3. Only the HC-05 Module works
+
+Connecting Bluetooth - Arduino and Raspberry Pi
+
+Raspberry Pu
+1. sudo apt-get install bluetooth bluez blueman
+
+2. Add user to the bluetooth group
+  sudo gpasswd -a <username> bluetooth
+Logoff and Logon again
+3. Start Bluetooth Service
+sudo /etc/init.d/bluetooth start
+4. install blueman and python-serial
+
+Connecting two hc-05's
+alselectro.wordpress.com
+
+
+download python-bluez
+python Code:
+
+
+import bluetooth
+bd_addr = ''
+port = 1
+sock = bluetooth.BluetoothSocket (bluetooth.RFCOMM)
+sock.connect((bd_addr,port))
+
+while 1:
+	tosend = raw_imput()
+	if(tosend != q)
+		sock.send(tosend)
+	else:
+		break
+sock.close()
+

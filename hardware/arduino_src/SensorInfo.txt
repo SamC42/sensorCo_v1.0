@@ -1,0 +1,14 @@
+Measurements:
+At 5 volts the sensor reads
+
+10-bit analog to digital converter
+
+5/1024 units = 4.9mv/unit
+
+Package:
+800 units x 4.9mv/unit = 3.92v
+
+
+No Package:  
+850 units x 4.9mv/unit = 4.6795v
+
