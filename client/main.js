@@ -1,6 +1,6 @@
 import { Template } from 'meteor/templating';
 import { ReactiveVar } from 'meteor/reactive-var';
-
+import { Sensors } from '../imports/api/sensors.js';
 import './main.html';
 
 Template.sensorlist.onCreated(function senseOnCreated() {
@@ -9,10 +9,14 @@ Template.sensorlist.onCreated(function senseOnCreated() {
 });
 
 Template.sensorlist.helpers({
-  	sensorval_arr: [
+  	//Commented to now use MongdoDb
+  	/*
+  	sensorvals: [
   		{name:"Sensor 1", val: "1"},
   		{name:"Sensor 2", val: "1"},
   		]
-  	//Need to grab from MongoDB
-  
+  	*/
+  	sensorvals(){
+  		return Sensors.find({});
+  	},
 });

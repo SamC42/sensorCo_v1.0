@@ -12,9 +12,12 @@
 <template name="sensorlist">
   <h2>Sensor List!</h2>
   <ul>
-    {{#each sensorval_arr}}
-      <li><b>Name: </b>{{name}} <b>Value: </b> {{val}}
+    {{#each sensorvals}}
+      <li>
+          <b>Name: </b>{{name}} 
+          <b>Value: </b> {{val}}
       </li>
     {{/each}}
   </ul>
 </template>
+
