@@ -9,6 +9,10 @@ Template.sensorlist.onCreated(function senseOnCreated() {
 });
 
 Template.sensorlist.helpers({
-  	sensorval_arr: ["11","22","33","44","55"]
+  	sensorval_arr: [
+  		{name:"Sensor 1", val: "1"},
+  		{name:"Sensor 2", val: "1"},
+  		]
+  	//Need to grab from MongoDB
   
 });
