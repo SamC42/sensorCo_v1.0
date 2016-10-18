@@ -23,12 +23,12 @@ int main (int   argc,
    /*
     * Create a new client instance
     */
-   client = mongoc_client_new ("mongodb://localhost:3000");
+   client = mongoc_client_new ("mongodb://127.0.0.1:3001");
 
    /*
     * Get a handle on the database "db_name" and collection "coll_name"
     */
-   database = mongoc_client_get_database (client, "meteor");
+   //database = mongoc_client_get_database (client, "meteor");
    collection = mongoc_client_get_collection (client, "meteor", "sensors");
 
    /*
