@@ -1,0 +1,19 @@
+<head>
+  <title>practice_app</title>
+</head>
+
+<body>
+  <h1>Sam's Sensor Co!</h1>
+  {{> sensorlist}}
+</body>
+
+
+
+<template name="sensorlist">
+  <h2>Sensor List!</h2>
+  <ul>
+    {{#each sensorval_arr}}
+      <li>{{this}}</li>
+    {{/each}}
+  </ul>
+</template>
