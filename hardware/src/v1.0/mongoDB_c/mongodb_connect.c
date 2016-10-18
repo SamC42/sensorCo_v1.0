@@ -47,7 +47,9 @@ int main (int   argc,
    str = bson_as_json (&reply, NULL);
    fprintf (stdout, "%s\n", str);
 
-   insert = BCON_NEW ("hello", BCON_UTF8 ("world"));
+   insert = BCON_NEW (
+                      "name", BCON_UTF8 ("Sensor"),
+                      "val", "3");
 
    if (!mongoc_collection_insert (collection, MONGOC_INSERT_NONE, insert, NULL, &error)) {
       fprintf (stderr, "%s\n", error.message);
