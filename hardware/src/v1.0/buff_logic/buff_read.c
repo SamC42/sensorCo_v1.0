@@ -4,6 +4,7 @@ This file handles the reading logic for the buffer
 */
 
 #include "buff_read.h"
+#include "../mongoDB_c/mongodb_api.c"
 /*
 Inputs: 
 	File Descriptor
@@ -29,12 +30,14 @@ int read_buffer(int file_d, char *buffer, int count_size){
     	//check if value pointed to by bufferOut == 3
         	printf("Recv: %c \n",*buffer);
             //update_door(0); --MONGO DB
+            insert_mdb("0");
             return 1;
         }
         //Open
         else if(*buffer == 1){
             printf("Recv: %c \n",*buffer);
             //update_door(1);
+            insert_mdb("1");
             return 1;
         }
         else{
