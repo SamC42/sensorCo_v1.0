@@ -45,7 +45,7 @@ int insert_mdb(int val){
    mongoc_collection_destroy (collection);
    mongoc_client_destroy (client);
    mongoc_cleanup ();
-   return 0;
+   return 1;
 }
 
 int delete_mdb(){
