@@ -12,6 +12,7 @@ Commands:
 */
 
 int insert_mdb(int val){
+	printf("SAM in insert MDB");
    mongoc_client_t      *client;
    mongoc_collection_t  *collection;
    bson_t               *insert;
@@ -46,15 +47,6 @@ int insert_mdb(int val){
    mongoc_client_destroy (client);
    mongoc_cleanup ();
    return 1;
-}
-
-int delete_mdb(){
-
-}
-
-int update_mdb(){
-
-
 }
 /*
 int main (int   argc,

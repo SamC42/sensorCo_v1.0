@@ -71,8 +71,8 @@ int main(int argc, char **argv[])
                         outbuff = 1;
                         write(cfd,outbuff,1);
                 }
-                else if(*buffer == '3'){
-                        outbuff = 3;
+                else if(*buffer == '0'){
+                        outbuff = 0;
                         write(cfd,outbuff,1);
                 }
                 else

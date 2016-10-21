@@ -8,7 +8,7 @@ This is the header file for buff_read.c
 //#include "../sql/connect_sql.h"
 
 
-int buff_read(int file_d, void *buf, int count_size);
+//int read_buffer(int file_d, void *buf, int count_size);
 
 
 #endif

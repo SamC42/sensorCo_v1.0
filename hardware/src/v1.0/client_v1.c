@@ -12,7 +12,7 @@
 #include <stdbool.h>
 #include "./socket_helpers/internalSocketConnect.c"
 #include "./help/help_menu.h"
-#include "./buff_logic/buff_read.h"
+#include "./buff_logic/buff_read.c"
 //#include "./socket_helpers/bluetoothSocketConnect.h"
 
 
