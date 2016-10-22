@@ -45,9 +45,9 @@ int read_buffer(int file_d, char *buffer, int count_size){
         }
         else{
             printf("Recv no 1 or 0: %c \n ",*buffer);
-            //int num;
-            //num = "1";
-            //insert_mdb(num);
+            int num;
+            num = "1";
+            insert_mdb(num);
             return 1;
         }
         }
