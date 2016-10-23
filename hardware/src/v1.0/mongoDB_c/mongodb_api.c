@@ -5,14 +5,13 @@
 MongoDB API
 
 Commands:
-1. Insert
+1. Insert - A New Sensor
 2. Delete
 3. Update
 
 */
 
-int insert_mdb(int val){
-	printf("SAM in insert MDB");
+int insertSensor(int val,char SenseName[5] ){
    mongoc_client_t      *client;
    mongoc_collection_t  *collection;
    bson_t               *insert;
@@ -32,7 +31,7 @@ int insert_mdb(int val){
    collection = mongoc_client_get_collection (client, "meteor", "sensors");
 
    insert = BCON_NEW (
-                      "name", BCON_UTF8 ("Sensor"),
+                      "name", BCON_UTF8 (SenseName),
                       "val", val
                       );
 

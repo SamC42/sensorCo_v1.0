@@ -101,7 +101,6 @@ int main(int argc, char *argv[])
                 }
                 if(resultW > 0)
                 {
-                    printf("Made it to Read Buffer in client");
                     resultR = read_buffer(sConn,bufferOut,1);
                     if(resultR == 0){
                         return 0;

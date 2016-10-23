@@ -58,7 +58,7 @@ int main(int argc, char **argv[])
                 endRead = read(cfd,buffer,sizeof(buffer));
                 //Write to a log file
                 
-                printf("Input: %c \n",*buffer);        
+                printf("Recv'd from Client: %c \n",*buffer);        
 
                 if(endRead < 0)
                         handle_error("SOCKET READING ERR");

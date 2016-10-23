@@ -31,7 +31,7 @@ int read_buffer(int file_d, char *buffer, int count_size){
             //update_door(0); --MONGO DB
             int num;
             num = "0";
-            insert_mdb(num);
+            insertSensor(num, "Name 0");
             return 1;
         }
         //Open
@@ -40,7 +40,7 @@ int read_buffer(int file_d, char *buffer, int count_size){
             //update_door(1);
             int num;
             num = "1";
-            insert_mdb(num);
+            insertSensor(num,"Name 1");
             return 1;
         }
         else{
