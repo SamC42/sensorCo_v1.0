@@ -68,11 +68,11 @@ int main(int argc, char **argv[])
                         quit = true;
                 }
                 else if(*buffer == '1'){
-                        outbuff = 1;
+                        outbuff = "1";
                         write(cfd,outbuff,1);
                 }
                 else if(*buffer == '0'){
-                        outbuff = 0;
+                        outbuff = "0";
                         write(cfd,outbuff,1);
                 }
                 else

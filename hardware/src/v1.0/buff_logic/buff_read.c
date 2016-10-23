@@ -25,7 +25,7 @@ int read_buffer(int file_d, char *buffer, int count_size){
     }
     if(readIn > 0){
         //Closed
-    	if(*buffer == 0){ //bufferOut is a address
+    	if(*buffer == '0'){ //bufferOut is a address
     	//check if value pointed to by bufferOut == 3
         	printf("Recv: %c \n",*buffer);
             //update_door(0); --MONGO DB
@@ -35,7 +35,7 @@ int read_buffer(int file_d, char *buffer, int count_size){
             return 1;
         }
         //Open
-        else if(*buffer == 1){
+        else if(*buffer == '1'){
             printf("Recv: %c \n",*buffer);
             //update_door(1);
             int num;
@@ -44,10 +44,7 @@ int read_buffer(int file_d, char *buffer, int count_size){
             return 1;
         }
         else{
-            printf("Recv no 1 or 0: %c \n ",*buffer);
-            int num;
-            num = "1";
-            insert_mdb(num);
+            printf("Recv: %c \n ",*buffer);
             return 1;
         }
         }
