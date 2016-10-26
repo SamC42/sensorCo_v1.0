@@ -10,7 +10,7 @@
 #include <string.h>
 #include <stdlib.h>
 #include <stdbool.h>
-
+#include "../../mongoDB_c/mongodb_api.c"
 
 #define handle_error(msg) do { perror(msg); exit(EXIT_FAILURE); } while (0)
 
@@ -69,11 +69,21 @@ int main(int argc, char **argv[])
                 }
                 else if(*buffer == '1'){
                         outbuff = "1";
+                        insertSensor("1","Name 1");
                         write(cfd,outbuff,1);
                 }
                 else if(*buffer == '0'){
                         outbuff = "0";
+                        insertSensor("0","Name 0");
                         write(cfd,outbuff,1);
+                }
+                else if(*buffer =='i'){
+                        write(cfd,"i",1);
+                        insertSensor("i","Name i");
+                        sleep(1000);
+                }
+                else if(*buffer =='D'){
+
                 }
                 else
                         write(cfd,"N",1);
