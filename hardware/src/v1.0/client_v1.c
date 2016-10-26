@@ -43,11 +43,13 @@ int main(int argc, char *argv[])
     
 
     char resultW, resultR;
-    char *buffer;
-    buffer = malloc(sizeof(char));
+    int buffSize = 4;
+    char buffer[buffSize];
+    int wSize = sizeof(buffer);
     int c;
-    char *bufferOut;
-    bufferOut = malloc(1); //size of a char = 1 byte
+    char bufferOut[2];
+
+    //bufferOut = malloc(1); //size of a char = 1 byte
     int cntTime = 0;
     bool quit = false;
     //Test socket to connect to a Socket on the computer
@@ -70,7 +72,7 @@ int main(int argc, char *argv[])
         printf("\nSend: ");
         
         if(loopFlag == 0){
-            fgets(buffer,2,stdin); //Needs to be to so we have an ending to get past for loop
+            fgets(buffer,3,stdin); //Needs to be to so we have an ending to get past for loop
             while((c = getchar()) != '\n' && c != EOF);   
            }
         else if(loopFlag == 1){
@@ -78,20 +80,20 @@ int main(int argc, char *argv[])
             printf("g\n");
             sleep(3);
             if(cntTime == 5){
-                *buffer = 'q';
+                buffer[0] = 'q';
             }
             else 
                 cntTime += 1;
         }
             //QUIT
-            if(*buffer == 'q'){
+            if(buffer[0] == 'q'){
                 quit = true;
                 break;
             }
             //NOT QUITTING
             else{
                 //printf("BUFFER: %c \n", *buffer);
-                resultW = write(sConn,buffer,1); //read 1 byte
+                resultW = write(sConn,buffer,wSize); //read 1 byte
                 //clientTracking(buffer);
                 if(resultW == 0){
                     printf("Nothing was written\n");
@@ -101,7 +103,7 @@ int main(int argc, char *argv[])
                 }
                 if(resultW > 0)
                 {
-                    resultR = read_buffer(sConn,bufferOut,1);
+                    resultR = read_buffer(sConn,bufferOut,wSize);
                     if(resultR == 0){
                         return 0;
                     }

@@ -46,23 +46,23 @@ int main(int argc, char **argv[])
                 else
                         puts("Accepted! Incoming data...");
                 
-
-        char *buffer;
-        buffer = malloc(sizeof(char));
+        int buffSize = 4;
+        char buffer[buffSize];
+        int wSize = sizeof(buffer);//Write Size
         int endRead;
         int *outbuff;
         bool quit;
         quit = false;
         while(quit != true){
                 quit = false;
-                endRead = read(cfd,buffer,sizeof(buffer));
+                endRead = read(cfd,buffer,wSize);
                 //Write to a log file
                 
-                printf("Recv'd from Client: %c \n",*buffer);        
+                printf("Recv'd from Client: %s \n",buffer);        
 
                 if(endRead < 0)
                         handle_error("SOCKET READING ERR");
-                if(*buffer == 'q')
+                if(buffer[0] == 'q')
                 {
                         printf("Quitting\n");
                         quit = true;
@@ -70,23 +70,24 @@ int main(int argc, char **argv[])
                 else if(*buffer == '1'){
                         outbuff = "1";
                         insertSensor("1","Name 1");
-                        write(cfd,outbuff,1);
+                        write(cfd,outbuff,wSize);
                 }
                 else if(*buffer == '0'){
                         outbuff = "0";
                         insertSensor("0","Name 0");
-                        write(cfd,outbuff,1);
+                        write(cfd,outbuff,wSize);
                 }
                 else if(*buffer =='i'){
-                        write(cfd,"i",1);
+                        write(cfd,"i",wSize);
                         insertSensor("i","Name i");
                         sleep(1000);
                 }
-                else if(*buffer =='D'){
-
+                else if(*buffer == 'u'){
+                        write(cfd,"u",wSize);
+                        //updateSensor();
                 }
                 else
-                        write(cfd,"N",1);
+                        write(cfd,"Wee",wSize);
                 }
 
         printf("\nClosing connection...\n");
