@@ -70,7 +70,7 @@ int main(int argc, char **argv[])
                 else if(*buffer == '1'){
                         outbuff = "1";
                         insertSensor("1","Name 1");
-                        write(cfd,outbuff,wSize);
+                        write(cfd,outbuff,3);
                 }
                 else if(*buffer == '0'){
                         outbuff = "0";
@@ -87,7 +87,7 @@ int main(int argc, char **argv[])
                         //updateSensor();
                 }
                 else
-                        write(cfd,"Wee",wSize);
+                        write(cfd,"Wee",3);
                 }
 
         printf("\nClosing connection...\n");

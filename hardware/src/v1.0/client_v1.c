@@ -47,7 +47,7 @@ int main(int argc, char *argv[])
     char buffer[buffSize];
     int wSize = sizeof(buffer);
     int c;
-    char bufferOut[2];
+    char bufferOut[3];
 
     //bufferOut = malloc(1); //size of a char = 1 byte
     int cntTime = 0;
@@ -72,7 +72,7 @@ int main(int argc, char *argv[])
         printf("\nSend: ");
         
         if(loopFlag == 0){
-            fgets(buffer,3,stdin); //Needs to be to so we have an ending to get past for loop
+            fgets(buffer,4,stdin); //Needs to be to so we have an ending to get past for loop
             while((c = getchar()) != '\n' && c != EOF);   
            }
         else if(loopFlag == 1){

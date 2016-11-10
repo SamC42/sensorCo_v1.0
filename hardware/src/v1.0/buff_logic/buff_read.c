@@ -12,7 +12,7 @@ Inputs:
 */
 
 
-int read_buffer(int file_d, char buffer[2], int count_size){
+int read_buffer(int file_d, char buffer[3], int count_size){
 	int readIn;
 	readIn = read(file_d,buffer,3);//read 3 bytes
 	if(readIn == 0){
