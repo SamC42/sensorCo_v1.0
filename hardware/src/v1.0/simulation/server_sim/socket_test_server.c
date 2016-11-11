@@ -52,6 +52,7 @@ int main(int argc, char **argv[])
         int endRead;
         int *outbuff;
         bool quit;
+        int sensor_id, sensor_status, sensor_value;
         quit = false;
         while(quit != true){
                 quit = false;
@@ -67,7 +68,7 @@ int main(int argc, char **argv[])
                         printf("Quitting\n");
                         quit = true;
                 }
-                else if(*buffer == '1'){
+               /* else if(*buffer == '1'){
                         outbuff = "1";
                         insertSensor("1","Name 1");
                         write(cfd,outbuff,3);
@@ -81,11 +82,31 @@ int main(int argc, char **argv[])
                         write(cfd,"i",wSize);
                         insertSensor("i","Name i");
                         sleep(1000);
-                }
-                else if(*buffer == 'u'){
-                        write(cfd,"u",wSize);
-                        //updateSensor();
-                }
+                }*/
+                //Grab the Sensor ID
+                *buffer[0] == sensor_id;
+                *buffer[1] == sensor_status;
+                *buffer[2] == sensor_value;
+                
+                // Get the List of Sensors
+
+                // Pair Sensor Id from List to Sensor Id from sensor
+
+                // If a match update the sensor's value and status
+                
+                // If no match decided wheather or not to add new sensor
+
+                
+
+
+
+
+
+
+
+
+
+
                 else
                         write(cfd,"Wee",3);
                 }
