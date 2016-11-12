@@ -69,9 +69,12 @@ int main(int argc, char **argv[])
                         quit = true;
                 }
                 else if(buffer[0] == '1'){
-                        char *id = (buffer +1);
-
-                        insertSensor(id,"1");
+                        char *name, value[1];
+                        strncpy(name,buffer,1);
+                        name[1] = '\0';
+                        strncpy(value,buffer+1,1);
+                        value[1] = '\0';
+                        insertSensor(name,value);
                         write(cfd,"111",3);
                 }
                 
