@@ -17,7 +17,7 @@
 
 int main(int argc, char **argv[])
 {
-		
+	        unlink("/tmp/mysocket11111111");	
                 int cfd;
                 socklen_t peer_addr_size;
         struct sockaddr_un local, peer_addr;        
@@ -68,45 +68,37 @@ int main(int argc, char **argv[])
                         printf("Quitting\n");
                         quit = true;
                 }
-               /* else if(*buffer == '1'){
-                        outbuff = "1";
-                        insertSensor("1","Name 1");
-                        write(cfd,outbuff,3);
+                else if(buffer[0] == '1'){
+                        char *id = (buffer +1);
+
+                        insertSensor(id,"1");
+                        write(cfd,"111",3);
                 }
+                
                 else if(*buffer == '0'){
-                        outbuff = "0";
-                        insertSensor("0","Name 0");
-                        write(cfd,outbuff,wSize);
+                        //insertSensor("0","Name0");
+                        write(cfd,"000",3);
                 }
                 else if(*buffer =='i'){
-                        write(cfd,"i",wSize);
-                        insertSensor("i","Name i");
-                        sleep(1000);
-                }*/
+                        write(cfd,"iii",3);
+                        //insertSensor("i","i");
+                }
+                else if(*buffer =='g'){
+                        //Get the list of with name
+                        getCollSensors();
+                        write(cfd,"ggg",3);
+
+                }
+                else if (*buffer =='u'){
+                        sensor_id = buffer[0];
+                        updateSensor();
+                        write(cfd,"uuu",3);
+
+                }
                 //Grab the Sensor ID
-                *buffer[0] == sensor_id;
-                *buffer[1] == sensor_status;
-                *buffer[2] == sensor_value;
-                
-                // Get the List of Sensors
-
-                // Pair Sensor Id from List to Sensor Id from sensor
-
-                // If a match update the sensor's value and status
-                
-                // If no match decided wheather or not to add new sensor
-
-                
-
-
-
-
-
-
-
-
-
-
+                //*buffer[0] == sensor_id;
+                //*buffer[1] == sensor_status;
+                //*buffer[2] == sensor_value;
                 else
                         write(cfd,"Wee",3);
                 }
