@@ -28,7 +28,6 @@ int main(int argc, char **argv[])
         while(quit != true){
                 quit = false;
                 endRead = read(cfd,buffer,wSize);
-                //Write to a log file
                 
                 printf("Recv'd from Client: %s \n",buffer);        
 

@@ -17,47 +17,27 @@ int insertSensor(char *senseid,char *val ){
    bson_t               *insert;
    bson_error_t          error;
    char                 *str;
-   /*
-    * Required to initialize libmongoc's internals
-    */
+   //Required to initialize libmongoc's internals
    mongoc_init ();
-   /*
-    * Create a new client instance
-    */
+   // Create a new client instance
    client = mongoc_client_new ("mongodb://127.0.0.1:3001");
-   /*
-    * Get a handle on the database "db_name" and collection "coll_name"
-    */
+   // Get a handle on the database "db_name" and collection "coll_name"
    collection = mongoc_client_get_collection (client, "meteor", "sensors");
 
-   insert = BCON_NEW (
-                      "name", senseid,
-                      "val", val
-                      );
+   insert = BCON_NEW ("name", senseid,"val", val);
 
    if (!mongoc_collection_insert (collection, MONGOC_INSERT_NONE, insert, NULL, &error)) {
       fprintf (stderr, "%s\n", error.message);
    }
 	bson_destroy (insert);
-   /*
-    * Release our handles and clean up libmongoc
-    */
+   // Release our handles and clean up libmongoc
    mongoc_collection_destroy (collection);
    mongoc_client_destroy (client);
    mongoc_cleanup ();
    return 1;
 }
-/*
-int main (int   argc,
-      char *argv[])
-{
-	int one;
-	one = "2";
-	insert_mdb(one);
-}
-*/
-// The Following Method gets the List of Sensors
 
+// The Following Method gets the List of Sensors
 int getCollSensors(){
    mongoc_client_t      *client;
    mongoc_collection_t  *collection;
