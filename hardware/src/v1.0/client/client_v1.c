@@ -10,7 +10,7 @@
 //#include <bluetooth/rfcomm.h>
 #include <string.h>
 #include <stdbool.h>
-#include "./socket_helpers/internalSocketConnect.c"
+#include "./socket_helpers/client_socketConn.c"
 #include "./help/help_menu.h"
 #include "./buff_logic/buff_read.c"
 //#include "./socket_helpers/bluetoothSocketConnect.h"

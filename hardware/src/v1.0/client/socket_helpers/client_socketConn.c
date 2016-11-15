@@ -8,7 +8,7 @@
 #include <sys/un.h>
 #include <string.h>
 #include <stdlib.h>
-#include "internalSocketConnect.h"
+#include "client_socketConn.h"
 
 #define handle_error(msg) do { perror(msg); exit(EXIT_FAILURE); } while (0)
 
@@ -18,18 +18,15 @@ int sockConn(){
         int s, status;
 
         memset(&local, 0, sizeof(struct sockaddr_un));
-        // unlink the socket in case it exited with err last run
-        // commented out so as to work with socat
-        // unlink("/dev/pts/9");        
         // allocate a socket
         s = socket(AF_UNIX, SOCK_STREAM, 0);
         // set the connection parameters (who to connect to)
         local.sun_family = AF_UNIX;
-        strcpy(local.sun_path, "/tmp/mysocket11111111");
+        strcpy(local.sun_path, "/tmp/mysocket");
                 //Connect to Server
         status = connect(s, (struct sockaddr *)&local, sizeof(local));   
         if(status == 0){
-                printf("Connect to Path: /tmp/mysocket11111111");
+                printf("Connect to Path: /tmp/mysocket");
                 return s;
         }
         else{

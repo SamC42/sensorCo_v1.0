@@ -10,8 +10,8 @@
 #include <string.h>
 #include <stdlib.h>
 #include <stdbool.h>
-#include "../../mongoDB_c/mongodb_api.c"
-#include "../../socket_conn/socket_conn.c"
+#include "./mongoDB_c/mongodb_api.c"
+#include "./socket_conn/socket_conn.c"
 
 
 int main(int argc, char **argv[])
