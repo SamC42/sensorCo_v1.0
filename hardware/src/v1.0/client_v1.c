@@ -62,7 +62,7 @@ int main(int argc, char *argv[])
     if(strcmp(argv[1],"-u") == 0){
         test = 1;
         printf("Unlinking...");
-        unlink("/tmp/mysocket11111111");
+        unlink("/tmp/mysocket");
 
 
     }
@@ -117,7 +117,7 @@ int main(int argc, char *argv[])
     if(test == 0)
     {
         printf("Unlinking...");
-        unlink("/tmp/mysocket11111111");
+        unlink("/tmp/mysocket");
     }
     else{
         printf("\nClosing connection...\n");

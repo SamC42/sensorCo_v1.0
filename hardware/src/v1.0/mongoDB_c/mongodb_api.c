@@ -90,14 +90,14 @@ int getCollSensors(){
 
 }
 
-int updateSensor(){
+int updateSensor(char *senseid,char *val){
   mongoc_collection_t *collection;
   mongoc_client_t *client;
   bson_error_t error;
   bson_t *doc = NULL;
   bson_t *update = NULL;
   bson_t *query = NULL;
-
+  
   mongoc_init ();
   client = mongoc_client_new ("mongodb://127.0.0.1:3001");
   collection = mongoc_client_get_collection (client, "meteor", "sensors");
