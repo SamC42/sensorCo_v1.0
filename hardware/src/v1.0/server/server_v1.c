@@ -12,60 +12,73 @@
 #include <stdbool.h>
 #include "./mongoDB_c/mongodb_api.c"
 #include "./socket_conn/socket_conn.c"
+#include "./packets/packet_parser.c"
 
 
 int main(int argc, char **argv[])
 {
-        int cfd = socket_conn();       
-        int buffSize = 4;
-        char buffer[buffSize];
-        int wSize = sizeof(buffer);//Write Size
-        int endRead;
-        int *outbuff;
-        bool quit;
-        int sensor_id, sensor_status, sensor_value;
-        quit = false;
-        while(quit != true){
-                quit = false;
-                endRead = read(cfd,buffer,wSize);
-                
-                printf("Recv'd from Client: %s \n",buffer);        
+        int sockFd = socket_conn();
 
-                if(endRead < 0)
+        //Define the bufferIn that will accept the data packet with length of 127 bytes       
+        int buffSize = 127; // Length of bufferIn in 
+        char bufferIn[buffSize];
+        int wSize = sizeof(bufferIn); //Write Size
+        
+        int readRes;
+        bool quit = false; //Loop Lookinf for q to exit
+        int sensor_id, sensor_status, sensor_value;
+
+        while(quit != true){
+
+                quit = false;
+                readRes = read(sockFd,bufferIn,wSize);
+                printf("Recv'd from Client: %s \n",bufferIn);        
+
+                if(readRes < 0)
                         handle_error("SOCKET READING ERR");
-                if(buffer[0] == 'q')
+                if(bufferIn[0] == 'q')
                 {
                         printf("Quitting\n");
                         quit = true;
                 }
-                else if(buffer[0] == '1'){
+                if(bufferIn[0] == 'e'){
+                        getId(bufferIn);
+                        getVal(bufferIn);
+                        getCInstr(bufferIn);
+                        getCData(bufferIn);
+                        getSInstr(bufferIn);
+                        getSData(bufferIn);
+                        write(sockFd,"qqq",3);
+                }
+                
+                /*else if(bufferIn[0] == '1'){
                         
                         //char *name, value[1];
-                        //strncpy(name,buffer,1);
+                        //strncpy(name,bufferIn,1);
                         //name[1] = '\0';
-                        //strncpy(value,buffer+1,1);
+                        //strncpy(value,bufferIn+1,1);
                         //value[1] = '\0';
                         //insertSensor(name,value);
-                        write(cfd,"111",3);
+                        write(sockFd,"111",3);
                 }
-                else if(buffer[0] =='i'){
+                else if(bufferIn[0] =='i'){
                         //insertSensor(name,value);
-                        write(cfd,"iii",3);
+                        write(sockFd,"iii",3);
                         insertSensor("i","i");
                 }
-                else if(buffer[0] =='g'){
+                else if(bufferIn[0] =='g'){
                         //Get the list of with name
                         //getCollSensors();
-                        write(cfd,"ggg",3);
+                        write(sockFd,"ggg",3);
 
                 }
-                else if (buffer[0] =='u'){
+                else if (bufferIn[0] =='u'){
                         updateSensor("name","value");
-                        write(cfd,"uuu",3);
+                        write(sockFd,"uuu",3);
 
-                }
-                else                       
-                        write(cfd,"Err",3);
+                }*/
+                //else                       
+                //        write(sockFd,"Err",3);
                 }
 
         printf("\nClosing connection...\n");

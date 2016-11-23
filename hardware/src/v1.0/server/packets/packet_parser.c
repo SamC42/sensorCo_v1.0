@@ -8,25 +8,25 @@
  * Return: id as an decimal
  * Range is from 0x000 -0xFFF
  */
-int id_to_dec(int idIn){
-	printf("ID 1: %d \n",idIn); 
-
-	return 0;
+int getId(char* idIn){
+    printf("Status ID: ");
+        for(int i=0; i<1; i++){
+                printf("%c",idIn[i]);
+                }
+    printf("\n");
 }
 /* Method to Determine the Status
  * Args: Status in hex
  * Returns: status as a decimal
  * Range is from 0x0 - 0x1
  */
-int status_to_dec(int statusIn){
-	if(statusIn = '0'){
-		return 0
-	}
-	else if(statusIn = '1'){
-		return 1;
-	}
-	else
-		return 3;
+int getVal(char* valIn){
+    printf("Sensor Value: ");
+        for(int i=1; i<2; i++){
+                printf("%c",valIn[i]);
+            }
+    printf("\n");
+	
 }
 
 /* Method to Determine the Value
@@ -34,7 +34,37 @@ int status_to_dec(int statusIn){
  * Returns: Value as a decimal
  * Range is from 0x000 - 0xFFF
  */
-int value_to_dec(int bufferIn){
+int getCInstr(char* cInstrIn){
+	
+	printf("Controller Instruction: ");
+	        for(int i=2; i<3; i++){
+	                printf("%c",cInstrIn[i]);
+	            }
+	printf("\n");
+	
+}
+int getCData(char* cDataIn){
+
+	printf("Controller Data: ");
+	        for(int i=3; i<4; i++){
+	                printf("%c",cDataIn[i]);
+	            }
+	printf("\n");
+}
+int getSInstr(char* sInstrIn){
+	printf("Sensor Instruction: ");
+	        for(int i=4; i<5; i++){
+	                printf("%c",sInstrIn[i]);
+	            }
+	printf("\n");
+}
+
+int getSData(char* sDataIn){
+	printf("Sensor Data: ");
+	        for(int i=5; i<6; i++){
+	                printf("%c",sDataIn[i]);
+	            }
+	printf("\n");
 
 }
 /* Method to Determine the Instruction
@@ -42,20 +72,3 @@ int value_to_dec(int bufferIn){
  * Returns: Instruction as an ascii character
  * Range is from 0x61 - 0x71
  */
-int instruction_to_ascii(int bufferIn){
-
-}
-
-/*
- * Tests the hex input to the functions above
- */
-int main(int argc, char **argv[]){
-	int hexVal = 0xFF;
-	id_to_dec(hexVal);
-	return 0;
-
-
-
-
-
-}

@@ -43,7 +43,7 @@ int main(int argc, char *argv[])
     
 
     char resultW, resultR;
-    int buffSize = 4;
+    int buffSize = 7;
     char buffer[buffSize];
     int wSize = sizeof(buffer);
     int c;
@@ -72,7 +72,7 @@ int main(int argc, char *argv[])
         printf("\nSend: ");
         
         if(loopFlag == 0){
-            fgets(buffer,4,stdin); //Needs to be to so we have an ending to get past for loop
+            fgets(buffer,wSize,stdin); //Needs to be to so we have an ending to get past for loop
             while((c = getchar()) != '\n' && c != EOF);   
            }
         else if(loopFlag == 1){
@@ -103,7 +103,7 @@ int main(int argc, char *argv[])
                 }
                 if(resultW > 0)
                 {
-                    resultR = read_buffer(sConn,bufferOut,wSize);
+                    resultR = read_buffer(sConn,bufferOut,3);
                     if(resultR == 0){
                         return 0;
                     }
