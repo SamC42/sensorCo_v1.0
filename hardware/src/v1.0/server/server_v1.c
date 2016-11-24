@@ -20,9 +20,8 @@ int main(int argc, char **argv[])
         int sockFd = socket_conn();
 
         //Define the bufferIn that will accept the data packet with length of 127 bytes       
-        int buffSize = 127; // Length of bufferIn in 
+        int buffSize = 7; // Length of bufferIn in = 6
         char bufferIn[buffSize];
-        int wSize = sizeof(bufferIn); //Write Size
         
         int readRes;
         bool quit = false; //Loop Lookinf for q to exit
@@ -31,8 +30,8 @@ int main(int argc, char **argv[])
         while(quit != true){
 
                 quit = false;
-                readRes = read(sockFd,bufferIn,wSize);
-                printf("Recv'd from Client: %s \n",bufferIn);        
+                readRes = read(sockFd,bufferIn,buffSize);
+                printf("Naked Data from Client: %s \n",bufferIn);        
 
                 if(readRes < 0)
                         handle_error("SOCKET READING ERR");
@@ -42,13 +41,8 @@ int main(int argc, char **argv[])
                         quit = true;
                 }
                 if(bufferIn[0] == 'e'){
-                        getId(bufferIn);
-                        getVal(bufferIn);
-                        getCInstr(bufferIn);
-                        getCData(bufferIn);
-                        getSInstr(bufferIn);
-                        getSData(bufferIn);
-                        write(sockFd,"qqq",3);
+                       printPacket(bufferIn);
+                        write(sockFd,"eeeeee",buffSize);
                 }
                 
                 /*else if(bufferIn[0] == '1'){

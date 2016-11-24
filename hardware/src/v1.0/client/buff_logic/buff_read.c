@@ -12,9 +12,9 @@ Inputs:
 */
 
 
-int read_buffer(int file_d, char buffer[3], int count_size){
+int read_buffer(int file_d, char* buffer, int count_size){
 	int readIn;
-	readIn = read(file_d,buffer,3);//read 3 bytes
+	readIn = read(file_d,buffer,count_size);
 	if(readIn == 0){
     	printf("End Of File, Nothing was read (buff_read.c/ln 19)\n");
         return 0;

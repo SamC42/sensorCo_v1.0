@@ -8,11 +8,16 @@
  * Return: id as an decimal
  * Range is from 0x000 -0xFFF
  */
+
+
 int getId(char* idIn){
-    printf("Status ID: ");
-        for(int i=0; i<1; i++){
-                printf("%c",idIn[i]);
-                }
+
+	int fromId 	= 0;
+	int toId 	= 1 - fromId;
+    printf("Status ID: 			");
+    for(int i=fromId; i<toId; i++){
+            printf("%0x",idIn[i]);
+            }
     printf("\n");
 }
 /* Method to Determine the Status
@@ -21,10 +26,12 @@ int getId(char* idIn){
  * Range is from 0x0 - 0x1
  */
 int getVal(char* valIn){
-    printf("Sensor Value: ");
-        for(int i=1; i<2; i++){
-                printf("%c",valIn[i]);
-            }
+	int fromVal	= 1;
+	int toVal	= 2;;
+    printf("Sensor Value: 			");
+	for(int i=1; i<2; i++){
+           printf("%d",valIn[i]);
+        }
     printf("\n");
 	
 }
@@ -35,40 +42,55 @@ int getVal(char* valIn){
  * Range is from 0x000 - 0xFFF
  */
 int getCInstr(char* cInstrIn){
-	
-	printf("Controller Instruction: ");
-	        for(int i=2; i<3; i++){
-	                printf("%c",cInstrIn[i]);
-	            }
+	int fromCInstr = 2;
+	int toCInstr   = 3;	
+	printf("Controller Instruction: 	");
+    for(int i=fromCInstr; i<toCInstr; i++){
+                printf("%c",cInstrIn[i]);
+            }
 	printf("\n");
 	
 }
 int getCData(char* cDataIn){
-
-	printf("Controller Data: ");
-	        for(int i=3; i<4; i++){
-	                printf("%c",cDataIn[i]);
-	            }
+	int fromCData  = 3;
+	int toCData    = 4;
+	printf("Controller Data:		");
+    for(int i=fromCData; i<toCData; i++){
+            printf("%c",cDataIn[i]);
+        }
 	printf("\n");
 }
 int getSInstr(char* sInstrIn){
-	printf("Sensor Instruction: ");
-	        for(int i=4; i<5; i++){
-	                printf("%c",sInstrIn[i]);
-	            }
+	int fromSInstr = 4;
+	int toSInstr   = 5;
+	printf("Sensor Instruction: 		");
+    for(int i=fromSInstr; i<toSInstr; i++){
+            printf("%c",sInstrIn[i]);
+        }
 	printf("\n");
 }
 
 int getSData(char* sDataIn){
-	printf("Sensor Data: ");
-	        for(int i=5; i<6; i++){
-	                printf("%c",sDataIn[i]);
-	            }
+	int fromSData  = 5;
+	int toSData    = 6;
+	printf("Sensor Data: 			");
+    for(int i=fromSData; i<toSData; i++){
+            printf("%c",sDataIn[i]);
+            }
 	printf("\n");
 
 }
-/* Method to Determine the Instruction
- * Args: instruction in hex
- * Returns: Instruction as an ascii character
- * Range is from 0x61 - 0x71
- */
+
+int printPacket(char* bufferIn){
+	printf("--------------Packet--------------\n");
+    getId(bufferIn);
+    getVal(bufferIn);
+    getCInstr(bufferIn);
+    getCData(bufferIn);
+    getSInstr(bufferIn);
+    getSData(bufferIn);
+    printf("--------------Packet--------------\n");
+}
+
+
+

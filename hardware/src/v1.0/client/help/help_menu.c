@@ -15,7 +15,6 @@ void *printHelpMenu(){
     printf("s argument for conecting with bluetooth\n");
     printf("t argument for testing socket conn w/out Bluetooth\n");
     printf("u argument for unlinking\n");
-    printf("sl for socket loop\n");
 
 
 }
