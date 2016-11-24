@@ -39,7 +39,7 @@ int main(int argc, char *argv[])
     char resultW, resultR;
 
     //Defines the Write Buffer
-    int buffSize = 7;
+    int buffSize = 14;
     char buffer[buffSize];
 
     int c;

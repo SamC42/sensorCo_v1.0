@@ -20,7 +20,7 @@ int main(int argc, char **argv[])
         int sockFd = socket_conn();
 
         //Define the bufferIn that will accept the data packet with length of 127 bytes       
-        int buffSize = 7; // Length of bufferIn in = 6
+        int buffSize = 14; // Length of bufferIn in = 6
         char bufferIn[buffSize];
         
         int readRes;
