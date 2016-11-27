@@ -36,10 +36,10 @@ int main(int argc, char * argv[])
 			printf("fp is null\n");
 			return 0;
 		}
-		/*while(fgetc(fp) != EOF){
-		}*/
 		char bufferOut[12];
 		fprintf(fp,"ertyuiokjhgf");
+		while(fgetc(fp) != EOF){
+		}
 		fprintf(fp,"qqqqqqqqqqqq");
 		pclose(fp);
 	
