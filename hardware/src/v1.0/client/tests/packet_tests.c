@@ -37,16 +37,12 @@ int main(int argc, char * argv[])
 			return 0;
 		}
 		char bufferOut[12];
-		fprintf(fp,"ertyuiokjhgf");
-		while(fgetc(fp) != EOF){
-		}
+		//fprintf(fp,"ertyuiokjhgf");
+		//while(fgetc(fp) != EOF){
+		//}
 		fprintf(fp,"qqqqqqqqqqqq");
 		pclose(fp);
-	
-		int c;
 		//while( c = fgetc(fp) != EOF){
-		printf("%s\n",c);
-		pclose(fp);
 	//}
 	}
 
