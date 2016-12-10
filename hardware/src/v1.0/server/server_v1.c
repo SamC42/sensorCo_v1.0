@@ -20,7 +20,7 @@ int main(int argc, char **argv[])
         int sockFd = socket_conn();
 
         //Define the bufferIn that will accept the data packet with length of 127 bytes       
-        int buffSize = 14; // Length of bufferIn in = 6
+        int buffSize = 13; // Length of bufferIn in = 6
         char bufferIn[buffSize];
         
         int readRes;
@@ -42,7 +42,7 @@ int main(int argc, char **argv[])
                 }
                 if(bufferIn[0] == 'e'){
                        printPacket(bufferIn);
-                        write(sockFd,"eeeeee",buffSize);
+                       write(sockFd,"eeeeeeeeeeee",buffSize);
                 }
                 
                 /*else if(bufferIn[0] == '1'){
@@ -71,8 +71,8 @@ int main(int argc, char **argv[])
                         write(sockFd,"uuu",3);
 
                 }*/
-                //else                       
-                //        write(sockFd,"Err",3);
+                else                       
+                        write(sockFd,"ssssssssssss",buffSize);
                 }
 
         printf("\nClosing connection...\n");

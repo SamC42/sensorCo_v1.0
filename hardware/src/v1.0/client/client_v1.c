@@ -23,23 +23,15 @@ int main(int argc, char *argv[])
     int sConn = 0;
     int loopFlag = 0;
     if( argc == 1 || strcmp(argv[1],"-h") == 0 || strcmp(argv[1],"") == 0){
-        //Input help menu print function
         printHelpMenu();
         return 0;
 
     }
-    if(strcmp(argv[1],"-s") == 0){
-        //sConn = bluetoothConnect();
-        if(sConn == 0){
-            return 0;
-        }   
-    }
     
-
     char resultW, resultR;
 
     //Defines the Write Buffer
-    int buffSize = 14;
+    int buffSize = 13;
     char buffer[buffSize];
 
     int c;
@@ -48,7 +40,7 @@ int main(int argc, char *argv[])
     int cntTime = 0;
     bool quit = false;
     //Test socket to connect to a Socket on the computer
-    if(strcmp(argv[1],"-t") == 0){
+    if(strcmp(argv[1],"-s") == 0){
         test = 0;
         //Add in Test Socket
         sConn = sockConn();
