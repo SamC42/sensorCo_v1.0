@@ -2,30 +2,29 @@
 
 This is a Sensor system to practice with IOT based protocols. The model is based on the CAN protocol.
 
-## Ensure you have the following installed
+#### Ensure you have the following installed
 1. Meteor: https://install.meteor.com/ | sh
 
 
-### Steps to Run 
+#### Steps to Run 
 1. Start the Server: 
-⋅⋅1. `cd /hardware/src/v1.0/server`
-⋅⋅2. `./Server`
+* `cd /hardware/src/v1.0/server`
+* `./Server`
 2. Start the Client
-⋅⋅1. `cd /hardware/src/v1.0/client`
-⋅⋅2. `./client -s`
-⋅⋅3. Enter 12 bytes starting with 'e' (i.e. eeeeeeeeeeee)
-
+* `cd /hardware/src/v1.0/client`
+* `./client -s`
+*  Enter 12 bytes starting with 'e' (i.e. eeeeeeeeeeee)
 
 
 **What you are seeing currently is the client or 'sensor' sending data to the server. Currently working towards version 1**
 
 
-#### Version 1
+### Version 1
 1. Working Server on the RPi 2
 2. Working Sensor Sending Data to the RPi via wired connection
 
 
-
+<hr>
 ##### Useful Help
 
 Command to insert data into a collection from a meteor mongo console
