@@ -8,18 +8,19 @@ This is a Sensor system to practice with IOT based protocols. The model is based
 
 #### Steps to Run 
 1. Start the Server: 
-* `cd /hardware/src/v1.0/server`
-* `./Server`
+	* `cd /hardware/src/v1.0/server`
+	* `./Server`
 2. Start the Client
-* `cd /hardware/src/v1.0/client`
-* `./client -s`
-*  Enter 12 bytes starting with 'e' (i.e. eeeeeeeeeeee)
+	* `cd /hardware/src/v1.0/client`
+	* `./client -s`
+	*  Enter 12 bytes starting with 'e' (i.e. eeeeeeeeeeee)
 
 
 **What you are seeing currently is the client or 'sensor' sending data to the server. Currently working towards version 1**
 
 
 ### Version 1
+<hr>
 1. Working Server on the RPi 2
 2. Working Sensor Sending Data to the RPi via wired connection
 
