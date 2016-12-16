@@ -13,8 +13,8 @@ void loop(){
   
   if(cmd == 'g'){
     senseIn = analogRead(anaIn);
-    Serial.print(senseIn);
-    Serial.println("New Line");
+    mySerial.print(senseIn);
+    mySerial.println("New Line");
     }
   else if(cmd == 'q')
     {
