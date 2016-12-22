@@ -1,6 +1,10 @@
 import smbus
 import time
 import Adafruit_ADS1x15
+import socket
+
+client = socket.socket(socket.AF_UNIX, socket.SOCK_STREAM)
+client.connect('/tmp/mysocket')
 
 adc = Adafruit_ADS1x15.ADS1015()
 
@@ -12,9 +16,17 @@ def readSingleReg():
     time.sleep(0.5)
     return val
 
-while True:
-    print readSingleReg();
-    
+
+def buildPacket():
+    packet = "eid" + str(readSingleReg()) + "ins" +"dat" + "ins" + "dat" #sending 12 e's for testing
+    return packet
+
+def sendPac2Soc():
+    client.send(buildPacket())
+
+
+#print hex(readSingleReg()) # Gives 3 bytes
+sendPac2Soc()
+client.close()
     
 
-    
