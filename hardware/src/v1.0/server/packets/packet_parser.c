@@ -13,7 +13,7 @@
 int getId(char* idIn){
 
 	int fromId 	= 0;
-	int toId 	= 2;
+	int toId 	= 3;
     printf("Status ID: 			");
     for(int i=fromId; i<toId; i++){
             printf("%c",idIn[i]);
@@ -26,8 +26,8 @@ int getId(char* idIn){
  * 
  */
 int getVal(char* valIn){
-	int fromVal	= 2;
-	int toVal	= 4;
+	int fromVal	= 3;
+	int toVal	= 6;
     printf("Sensor Value: 			");
 	for(int i=fromVal; i<toVal; i++){
            printf("%c",valIn[i]);
@@ -42,8 +42,8 @@ int getVal(char* valIn){
  * Range is from 0x000 - 0xFFF
  */
 int getCInstr(char* cInstrIn){
-	int fromCInstr = 4;
-	int toCInstr   = 6;	
+	int fromCInstr = 6;
+	int toCInstr   = 9;	
 	printf("Controller Instruction: 	");
     for(int i=fromCInstr; i<toCInstr; i++){
                 printf("%c",cInstrIn[i]);
@@ -54,8 +54,8 @@ int getCInstr(char* cInstrIn){
 /* Method to determine the controller data
 */
 int getCData(char* cDataIn){
-	int fromCData  = 6;
-	int toCData    = 8;
+	int fromCData  = 9;
+	int toCData    = 12;
 	printf("Controller Data:		");
     for(int i=fromCData; i<toCData; i++){
             printf("%c",cDataIn[i]);
@@ -66,8 +66,8 @@ int getCData(char* cDataIn){
 
 */
 int getSInstr(char* sInstrIn){
-	int fromSInstr = 8;
-	int toSInstr   = 10;
+	int fromSInstr = 12;
+	int toSInstr   = 15;
 	printf("Sensor Instruction: 		");
     for(int i=fromSInstr; i<toSInstr; i++){
             printf("%c",sInstrIn[i]);
@@ -78,8 +78,8 @@ int getSInstr(char* sInstrIn){
 
 */
 int getSData(char* sDataIn){
-	int fromSData  = 10;
-	int toSData    = 12;
+	int fromSData  = 15;
+	int toSData    = 18;
 	printf("Sensor Data: 			");
     for(int i=fromSData; i<toSData; i++){
             printf("%c",sDataIn[i]);
