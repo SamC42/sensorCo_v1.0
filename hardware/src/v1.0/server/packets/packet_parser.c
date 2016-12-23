@@ -10,15 +10,23 @@
  */
 
 
-int getId(char* idIn){
+char* getId(char* idIn, char cmd){
 
 	int fromId 	= 0;
 	int toId 	= 3;
+    char *res;
+    res = malloc(3);
     printf("Status ID: 			");
     for(int i=fromId; i<toId; i++){
             printf("%c",idIn[i]);
-            }
-    printf("\n");
+        //if(cmd == 'n'){
+            res[i] = idIn[i];
+        //}   
+    }
+    //if(cmd == 'n'){
+        res[3] = '\0';
+        return res;
+    //}
 }
 /* Method to Determine the Value
  * Args: Value as int
@@ -93,14 +101,19 @@ Method to print the packet
 */
 int printPacket(char* bufferIn){
 	printf("--------------Packet--------------\n");
-    getId(bufferIn);
+    char *res;
+    res = getId(bufferIn, 'n');
+    printf("\n");
     getVal(bufferIn);
     getCInstr(bufferIn);
     getCData(bufferIn);
     getSInstr(bufferIn);
     getSData(bufferIn);
     printf("--------------Packet--------------\n");
+    return res;
 }
 
+int addNullTerm(char *bufferIn){
 
+}
 

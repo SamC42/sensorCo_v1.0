@@ -41,10 +41,24 @@ int main(int argc, char **argv[])
                         quit = true;
                 }
                 if(bufferIn[0] == 'e'){
-                       printPacket(bufferIn);
-                       write(sockFd,"eeeeeeeeeeee",buffSize);
+                       printf("\nRESULT: %s\n", printPacket(bufferIn));
+                       write(sockFd,"eeeeeeeeeeeeeeeeee",buffSize);
                 }
-                
+                // Insert Command Received
+                if(bufferIn[14] == 'i'){
+                    printf("Instr: i\n");
+                    printPacket(bufferIn);
+                    
+                    char *name, value[1];
+                    strncpy(name,bufferIn,1);
+
+                    name[1] = '\0';
+                    strncpy(value,bufferIn+1,1);
+                    value[1] = '\0';
+
+                    //insertSensor(sense_id, sense_val, cont_instr, cont_data, sense_instr, sensor_data);
+
+                }
                 /*else if(bufferIn[0] == '1'){
                         
                         //char *name, value[1];

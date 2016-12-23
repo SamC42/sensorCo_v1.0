@@ -11,30 +11,28 @@ Commands:
 
 */
 
-int insertSensor(char *senseid,char *val ){
+int insertSensor(char *sense_id,char *sense_val, char *cont_instr, char *cont_data, char *sense_instr, char *sensor_data);
+ ){
    mongoc_client_t      *client;
    mongoc_collection_t  *collection;
    bson_t               *insert;
    bson_error_t          error;
    char                 *str;
-   //Required to initialize libmongoc's internals
+
    mongoc_init ();
-   // Create a new client instance
    client = mongoc_client_new ("mongodb://127.0.0.1:3001");
-   // Get a handle on the database "db_name" and collection "coll_name"
    collection = mongoc_client_get_collection (client, "meteor", "sensors");
 
-   insert = BCON_NEW ("name", senseid,"val", val);
+   insert = BCON_NEW ("sense_id", sense_id,"val", sense_val, "cont_instr",cont_instr,"cont_data",cont_data,"sense_instr",sense_instr,"sensor_data",sensor_data);
 
    if (!mongoc_collection_insert (collection, MONGOC_INSERT_NONE, insert, NULL, &error)) {
       fprintf (stderr, "%s\n", error.message);
    }
 	bson_destroy (insert);
-   // Release our handles and clean up libmongoc
-   mongoc_collection_destroy (collection);
-   mongoc_client_destroy (client);
-   mongoc_cleanup ();
-   return 1;
+  mongoc_collection_destroy (collection);
+  mongoc_client_destroy (client);
+  mongoc_cleanup ();
+  return 1;
 }
 
 // The Following Method gets the List of Sensors
