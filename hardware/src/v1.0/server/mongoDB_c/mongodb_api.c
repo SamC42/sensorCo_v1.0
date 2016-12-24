@@ -11,7 +11,7 @@ Commands:
 
 */
 
-int insertSensor(char *sense_id,char *sense_val, char *cont_instr, char *cont_data, char *sense_instr, char *sensor_data)
+int insertSensor(char *sense_id,char *sense_val, char *cont_instr, char *cont_data, char *sense_instr, char *sense_data)
  {
    mongoc_client_t      *client;
    mongoc_collection_t  *collection;
@@ -23,7 +23,7 @@ int insertSensor(char *sense_id,char *sense_val, char *cont_instr, char *cont_da
    client = mongoc_client_new ("mongodb://127.0.0.1:3001");
    collection = mongoc_client_get_collection (client, "meteor", "sensors");
 
-   insert = BCON_NEW ("sense_id", sense_id,"val", sense_val, "cont_instr",cont_instr,"cont_data",cont_data,"sense_instr",sense_instr,"sensor_data",sensor_data);
+   insert = BCON_NEW ("sense_id", sense_id,"sense_val", sense_val, "cont_instr",cont_instr,"cont_data",cont_data,"sense_instr",sense_instr,"sense_data",sense_data);
 
    if (!mongoc_collection_insert (collection, MONGOC_INSERT_NONE, insert, NULL, &error)) {
       fprintf (stderr, "%s\n", error.message);
@@ -68,7 +68,7 @@ int getCollSensors(){
 
 }
 
-int updateSensor(char *senseid,char *val){
+int updateSensor(char *sense_id,char *val){
   mongoc_collection_t *collection;
   mongoc_client_t *client;
   bson_error_t error;
@@ -80,8 +80,8 @@ int updateSensor(char *senseid,char *val){
   client = mongoc_client_new ("mongodb://127.0.0.1:3001");
   collection = mongoc_client_get_collection (client, "meteor", "sensors");
 
-  query = BCON_NEW("name", "Name0");
-  update =BCON_NEW("$set","{","val", "2","}");
+  query = BCON_NEW("sense_id", sense_id);
+  update =BCON_NEW("$set","{","sense_val", val,"}");
 
   if(!mongoc_collection_update(collection,MONGOC_UPDATE_NONE,query,update,NULL,&error)){
     fprintf(stderr, "%s\n", error.message);

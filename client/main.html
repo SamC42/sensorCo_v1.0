@@ -13,10 +13,13 @@
   <h2>Current Sensors</h2>
   <ul>
     {{#each sensorvals}}<br>
-          <b>Name: </b>{{name}} 
-          <b>Value: </b> {{val}}
-      
+          <b>ID: </b>{{sense_id}} 
+          <b>Value: </b> {{sense_val}}
+          <b>Controller Instruction: </b>{{cont_instr}}
+          <b>Controller Data: </b>{{cont_data}}      
+          <b>Sensor Instruction: </b>{{sense_instr}}
+          <b>Sensor Data: </b>{{sense_data}}
     {{/each}}
-  </ul>
+  </ul> 
 </template>
 

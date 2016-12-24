@@ -37,12 +37,12 @@ char* getId(char* idIn){
     res = malloc(4);
     int fromVal = 0;
     int toVal   = 3;
-    printf("Status ID:              ");
+    printf("Status ID:                ");
     for(int i=fromVal; i<toVal; i++){
            printf("%c",idIn[i]);
            res[i] = idIn[i];
         }
-    res[4] = '\0';
+    res[3] = '\0';
     printf("\n");   
     return res;
 }
@@ -52,18 +52,20 @@ char* getId(char* idIn){
  * 
  */
 char* getVal(char* valIn){
-	int fromVal	= 3;
+	char *res1;
+    res1 = malloc(4);
+    int fromVal	= 3;
 	int toVal	= 6;
-    char *res;
-    malloc(4);
     printf("Sensor Value: 			");
+    int count =0;
 	for(int i=fromVal; i<toVal; i++){
            printf("%c",valIn[i]);
-           res[i] = valIn[i];
+           res1[count] = valIn[i];
+           count = count + 1;
         }
-    res[4] = '\0';
+    res1[3] = '\0';
     printf("\n");
-	return res;
+	return res1;
 }
 
 /* Method to Determine the Controller Instruction
@@ -72,69 +74,81 @@ char* getVal(char* valIn){
  * Range is from 0x000 - 0xFFF
  */
 char* getCInstr(char* cInstrIn){
-    char *res;
-    malloc(4);
+    char *res2;
+    res2 = malloc(4);
 	int fromCInstr = 6;
 	int toCInstr   = 9;	
+    int count = 0;
 	printf("Controller Instruction: 	");
     for(int i=fromCInstr; i<toCInstr; i++){
                 printf("%c",cInstrIn[i]);
-                res[i] = cInstrIn[i];
+                res2[count] = cInstrIn[i];
+                count = count + 1;
+
             }
-    res[4] = '\0';
+    res2[3] = '\0';
 	printf("\n");
-    return res;
+    return res2;
 	
 }
 /* Method to determine the controller data
 */
 char* getCData(char* cDataIn){
-    char *res;
-    malloc(4);
+    char *res3;
+    res3 = malloc(4);
 	int fromCData  = 9;
 	int toCData    = 12;
 	printf("Controller Data:		");
+    int count = 0;
     for(int i=fromCData; i<toCData; i++){
             printf("%c",cDataIn[i]);
-            res[i] = cDataIn[i];
+            res3[count] = cDataIn[i];
+            count = count + 1;
+
         }
-    res[4] = '\0';        
+    res3[3] = '\0';        
 	printf("\n");
-    return res;
+    return res3;
 }
 /*	Method to determine the Sensor Instruction (Recieving Instr)
 
 */
 char* getSInstr(char* sInstrIn){
-	char *res;
-    malloc(4);
+	char *res4;
+    res4 = malloc(4);
     int fromSInstr = 12;
 	int toSInstr   = 15;
+    int count = 0;
 	printf("Sensor Instruction: 		");
     for(int i=fromSInstr; i<toSInstr; i++){
             printf("%c",sInstrIn[i]);
-            res[i] = sInstrIn[i];
+            res4[count] = sInstrIn[i];
+            count = count + 1;
+
         }
-    res[4] = '\0';
+    res4[3] = '\0';
 	printf("\n");
-    return res;
+    return res4;
 }
 /* Method to determine the Sensor's data from the instruction
 
 */
 char* getSData(char* sDataIn){
-	char *res;
-    malloc(4);
+	char *res5;
+    res5 = malloc(4);
     int fromSData  = 15;
 	int toSData    = 18;
+    int count = 0;
 	printf("Sensor Data: 			");
     for(int i=fromSData; i<toSData; i++){
             printf("%c",sDataIn[i]);
-            res[i] = sDataIn[i];
+            res5[count] = sDataIn[i];
+            count = count + 1;
+
             }
-    res[4] = '\0';
+    res5[3] = '\0';
 	printf("\n");
-    return res;
+    return res5;
 
 }
 /*

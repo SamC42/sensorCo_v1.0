@@ -41,13 +41,14 @@ int main(int argc, char **argv[])
                         quit = true;
                 }
                 if(bufferIn[0] == 'e'){
-                       printf("RES:%s \n",printPacket(bufferIn));
+                       printPacket(bufferIn);
                        write(sockFd,"eeeeeeeeeeeeeeeeee",buffSize);
                 }
                 // Insert Command Received
-                if(bufferIn[0] == 'i'){ //0 right now for clarity 14
+                if(bufferIn[14] == 'i'){ //0 right now for clarity 14
                     printf("Instr: i\n");
-                    char *id,*val,*cInstr,*cData,*sInstr,*sData;
+                    char *id,*cInstr,*cData,*sInstr,*sData;
+                    char *val;
                     id = malloc(4);
                     val = malloc(4);
                     cInstr = malloc(4);
@@ -61,45 +62,25 @@ int main(int argc, char **argv[])
                     cData = getCData(bufferIn);
                     sInstr = getSInstr(bufferIn);
                     sData = getSData(bufferIn);
-                    
-                    char *name, value[1];
-                    strncpy(name,bufferIn,1);
-
-                    name[1] = '\0';
-                    strncpy(value,bufferIn+1,1);
-                    value[1] = '\0';
-
                     insertSensor(id, val, cInstr, cData, sInstr, sData);
+                    write(sockFd,"eeeeeeeeeeeeeeeeee",buffSize);
+
 
                 }
-                /*else if(bufferIn[0] == '1'){
-                        
-                        //char *name, value[1];
-                        //strncpy(name,bufferIn,1);
-                        //name[1] = '\0';
-                        //strncpy(value,bufferIn+1,1);
-                        //value[1] = '\0';
-                        //insertSensor(name,value);
-                        write(sockFd,"111",3);
-                }
-                else if(bufferIn[0] =='i'){
-                        //insertSensor(name,value);
-                        write(sockFd,"iii",3);
-                        insertSensor("i","i");
-                }
-                else if(bufferIn[0] =='g'){
-                        //Get the list of with name
-                        //getCollSensors();
-                        write(sockFd,"ggg",3);
+                if(bufferIn[14] == 'u'){
+                    printf("Instr: i\n");
+                    char *id, *val;
+                    id = malloc(4);
+                    val = malloc(4);
+                    id = getId(bufferIn);
+                    val = getVal(bufferIn);
+                    updateSensor(id,val);
+                    write(sockFd,"uuuuuuuuuuuuuuuuu",buffSize);
+
 
                 }
-                else if (bufferIn[0] =='u'){
-                        updateSensor("name","value");
-                        write(sockFd,"uuu",3);
-
-                }*/
                 else                       
-                        write(sockFd,"ssssssssssss",buffSize);
+                        write(sockFd,"ssssssssssssssssss",buffSize);
                 }
 
         printf("\nClosing connection...\n");
