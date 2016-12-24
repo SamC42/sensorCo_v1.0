@@ -11,8 +11,8 @@ Commands:
 
 */
 
-int insertSensor(char *sense_id,char *sense_val, char *cont_instr, char *cont_data, char *sense_instr, char *sensor_data);
- ){
+int insertSensor(char *sense_id,char *sense_val, char *cont_instr, char *cont_data, char *sense_instr, char *sensor_data)
+ {
    mongoc_client_t      *client;
    mongoc_collection_t  *collection;
    bson_t               *insert;

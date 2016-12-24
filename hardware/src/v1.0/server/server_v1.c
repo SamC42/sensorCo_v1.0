@@ -10,7 +10,7 @@
 #include <string.h>
 #include <stdlib.h>
 #include <stdbool.h>
-//#include "./mongoDB_c/mongodb_api.c"
+#include "./mongoDB_c/mongodb_api.c"
 #include "./socket_conn/socket_conn.c"
 #include "./packets/packet_parser.c"
 
@@ -41,13 +41,26 @@ int main(int argc, char **argv[])
                         quit = true;
                 }
                 if(bufferIn[0] == 'e'){
-                       printf("\nRESULT: %s\n", printPacket(bufferIn));
+                       printf("RES:%s \n",printPacket(bufferIn));
                        write(sockFd,"eeeeeeeeeeeeeeeeee",buffSize);
                 }
                 // Insert Command Received
-                if(bufferIn[14] == 'i'){
+                if(bufferIn[0] == 'i'){ //0 right now for clarity 14
                     printf("Instr: i\n");
-                    printPacket(bufferIn);
+                    char *id,*val,*cInstr,*cData,*sInstr,*sData;
+                    id = malloc(4);
+                    val = malloc(4);
+                    cInstr = malloc(4);
+                    cData = malloc(4);
+                    sInstr = malloc(4);
+                    sData = malloc(4);
+
+                    id = getId(bufferIn);
+                    val = getVal(bufferIn);
+                    cInstr = getCInstr(bufferIn);
+                    cData = getCData(bufferIn);
+                    sInstr = getSInstr(bufferIn);
+                    sData = getSData(bufferIn);
                     
                     char *name, value[1];
                     strncpy(name,bufferIn,1);
@@ -56,7 +69,7 @@ int main(int argc, char **argv[])
                     strncpy(value,bufferIn+1,1);
                     value[1] = '\0';
 
-                    //insertSensor(sense_id, sense_val, cont_instr, cont_data, sense_instr, sensor_data);
+                    insertSensor(id, val, cInstr, cData, sInstr, sData);
 
                 }
                 /*else if(bufferIn[0] == '1'){
