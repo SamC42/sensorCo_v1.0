@@ -1,5 +1,6 @@
 <head>
   <title>practice_app</title>
+    <link rel="stylesheet" href="/main.css" type="text/css"/>
 </head>
 
 <body>
@@ -13,12 +14,12 @@
   <h2>Current Sensors</h2>
   <ul>
     {{#each sensorvals}}<br>
-          <b>ID: </b>{{sense_id}} 
-          <b>Value: </b> {{sense_val}}
-          <b>Controller Instruction: </b>{{cont_instr}}
+          <span id="id"><b>ID: </b>{{sense_id}}</span> 
+          <span id="value"></span><b>Value: </b> {{sense_val}}
+          <!--<b>Controller Instruction: </b>{{cont_instr}}
           <b>Controller Data: </b>{{cont_data}}      
           <b>Sensor Instruction: </b>{{sense_instr}}
-          <b>Sensor Data: </b>{{sense_data}}
+          <b>Sensor Data: </b>{{sense_data}}-->
     {{/each}}
   </ul> 
 </template>

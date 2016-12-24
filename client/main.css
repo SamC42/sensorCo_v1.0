@@ -1,1 +1,14 @@
-/* CSS declarations go here */
+html,body{
+height: 100%;
+}
+body{
+font-size: 18px;
+font-family: monospace;
+
+} 
+.id{
+font-size: 40px;
+}
+.value{
+font-size: 20px;
+}
