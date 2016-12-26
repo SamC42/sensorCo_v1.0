@@ -37,7 +37,6 @@ char* getId(char* idIn){
     res = malloc(4);
     int fromVal = 0;
     int toVal   = 3;
-    printf("Status ID:                ");
     for(int i=fromVal; i<toVal; i++){
            printf("%c",idIn[i]);
            res[i] = idIn[i];
@@ -56,7 +55,6 @@ char* getVal(char* valIn){
     res1 = malloc(4);
     int fromVal	= 3;
 	int toVal	= 6;
-    printf("Sensor Value: 			");
     int count =0;
 	for(int i=fromVal; i<toVal; i++){
            printf("%c",valIn[i]);
@@ -79,7 +77,6 @@ char* getCInstr(char* cInstrIn){
 	int fromCInstr = 6;
 	int toCInstr   = 9;	
     int count = 0;
-	printf("Controller Instruction: 	");
     for(int i=fromCInstr; i<toCInstr; i++){
                 printf("%c",cInstrIn[i]);
                 res2[count] = cInstrIn[i];
@@ -98,7 +95,6 @@ char* getCData(char* cDataIn){
     res3 = malloc(4);
 	int fromCData  = 9;
 	int toCData    = 12;
-	printf("Controller Data:		");
     int count = 0;
     for(int i=fromCData; i<toCData; i++){
             printf("%c",cDataIn[i]);
@@ -119,7 +115,6 @@ char* getSInstr(char* sInstrIn){
     int fromSInstr = 12;
 	int toSInstr   = 15;
     int count = 0;
-	printf("Sensor Instruction: 		");
     for(int i=fromSInstr; i<toSInstr; i++){
             printf("%c",sInstrIn[i]);
             res4[count] = sInstrIn[i];
@@ -139,7 +134,6 @@ char* getSData(char* sDataIn){
     int fromSData  = 15;
 	int toSData    = 18;
     int count = 0;
-	printf("Sensor Data: 			");
     for(int i=fromSData; i<toSData; i++){
             printf("%c",sDataIn[i]);
             res5[count] = sDataIn[i];
@@ -157,11 +151,17 @@ Method to print the packet
 */
 char* printPacket(char* bufferIn){
 	printf("--------------Packet--------------\n");
+    printf("Status ID:              ");
     getId(bufferIn);
+    printf("Sensor Value:           ");
     getVal(bufferIn);
+    printf("Controller Instruction: ");
     getCInstr(bufferIn);
+    printf("Controller Data:        ");
     getCData(bufferIn);
+    printf("Sensor Instruction:     ");
     getSInstr(bufferIn);
+    printf("Sensor Data:            ");
     getSData(bufferIn);
     printf("--------------Packet--------------\n");
 }

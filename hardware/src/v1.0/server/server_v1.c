@@ -74,8 +74,9 @@ int main(int argc, char **argv[])
                     val = malloc(4);
                     id = getId(bufferIn);
                     val = getVal(bufferIn);
+                    printf("Updating ID: %s with Val of: %s \n",id,val);
                     updateSensor(id,val);
-                    write(sockFd,"uuuuuuuuuuuuuuuuu",buffSize);
+                    write(sockFd,"uuuuuuuuuuuuuuuuuu",buffSize);
 
 
                 }
