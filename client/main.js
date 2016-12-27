@@ -21,3 +21,4 @@ Template.sensorlist.helpers({
   		return Sensors.find({});
   	},
 });
+

@@ -1,6 +1,7 @@
 #include <bson.h>
 #include <bcon.h>
 #include <mongoc.h>
+#include </usr/local/include/cjson/cJSON.h>
 /*
 MongoDB API
 
@@ -36,14 +37,15 @@ int insertSensor(char *sense_id,char *sense_val, char *cont_instr, char *cont_da
 }
 
 // The Following Method gets the List of Sensors
-int getCollSensors(){
+// Returns 1 if the sensor exists
+int getCollSensors(char *sense_id){
    mongoc_client_t      *client;
    mongoc_collection_t  *collection;
    mongoc_cursor_t      *cursor;
    const bson_t         *doc;
    bson_t               *query;
    char                 *str;
-   
+   int res = 0;
    mongoc_init ();
    client = mongoc_client_new ("mongodb://127.0.0.1:3001");
    collection = mongoc_client_get_collection (client, "meteor", "sensors");
@@ -55,15 +57,26 @@ int getCollSensors(){
 
    while (mongoc_cursor_next (cursor, &doc)){
     str = bson_as_json (doc, NULL);
-    printf("%s\n",str);
+    cJSON *root = cJSON_Parse(str);
+    char *idOut = cJSON_GetObjectItem(root,"sense_id")->valuestring;
+    // if the sensor exists do not insert it 
+    int cmp = strcmp(idOut,sense_id);
+    if(cmp == 0){
+      return 1;
+    }
+    else
+      res = 0;
+    //printf("idOut:%s and Sense_Id:%s\n",idOut,sense_id);
+    //printf("%s\n",idOut); //Prints the list of Sensors
     bson_free(str);
    }
+   
    bson_destroy(query);
    mongoc_cursor_destroy(cursor);
    mongoc_collection_destroy(collection);
    mongoc_client_destroy(client);
-   mongoc_cleanup();
-   return 0;
+   mongoc_cleanup(); 
+   return res;
 
 
 }

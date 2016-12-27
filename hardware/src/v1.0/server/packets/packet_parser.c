@@ -38,11 +38,11 @@ char* getId(char* idIn){
     int fromVal = 0;
     int toVal   = 3;
     for(int i=fromVal; i<toVal; i++){
-           printf("%c",idIn[i]);
+           //printf("%c",idIn[i]);
            res[i] = idIn[i];
         }
     res[3] = '\0';
-    printf("\n");   
+    //printf("\n");   
     return res;
 }
 /* Method to Determine the Value
@@ -57,12 +57,12 @@ char* getVal(char* valIn){
 	int toVal	= 6;
     int count =0;
 	for(int i=fromVal; i<toVal; i++){
-           printf("%c",valIn[i]);
+           //printf("%c",valIn[i]);
            res1[count] = valIn[i];
            count = count + 1;
         }
     res1[3] = '\0';
-    printf("\n");
+    //printf("\n");
 	return res1;
 }
 
@@ -78,13 +78,13 @@ char* getCInstr(char* cInstrIn){
 	int toCInstr   = 9;	
     int count = 0;
     for(int i=fromCInstr; i<toCInstr; i++){
-                printf("%c",cInstrIn[i]);
+                //printf("%c",cInstrIn[i]);
                 res2[count] = cInstrIn[i];
                 count = count + 1;
 
             }
     res2[3] = '\0';
-	printf("\n");
+	//printf("\n");
     return res2;
 	
 }
@@ -97,13 +97,13 @@ char* getCData(char* cDataIn){
 	int toCData    = 12;
     int count = 0;
     for(int i=fromCData; i<toCData; i++){
-            printf("%c",cDataIn[i]);
+           // printf("%c",cDataIn[i]);
             res3[count] = cDataIn[i];
             count = count + 1;
 
         }
     res3[3] = '\0';        
-	printf("\n");
+	//printf("\n");
     return res3;
 }
 /*	Method to determine the Sensor Instruction (Recieving Instr)
@@ -116,13 +116,13 @@ char* getSInstr(char* sInstrIn){
 	int toSInstr   = 15;
     int count = 0;
     for(int i=fromSInstr; i<toSInstr; i++){
-            printf("%c",sInstrIn[i]);
+            //printf("%c",sInstrIn[i]);
             res4[count] = sInstrIn[i];
             count = count + 1;
 
         }
     res4[3] = '\0';
-	printf("\n");
+	//printf("\n");
     return res4;
 }
 /* Method to determine the Sensor's data from the instruction
@@ -135,13 +135,13 @@ char* getSData(char* sDataIn){
 	int toSData    = 18;
     int count = 0;
     for(int i=fromSData; i<toSData; i++){
-            printf("%c",sDataIn[i]);
+            ///printf("%c",sDataIn[i]);
             res5[count] = sDataIn[i];
             count = count + 1;
 
             }
     res5[3] = '\0';
-	printf("\n");
+	//printf("\n");
     return res5;
 
 }
@@ -152,17 +152,17 @@ Method to print the packet
 char* printPacket(char* bufferIn){
 	printf("--------------Packet--------------\n");
     printf("Status ID:              ");
-    getId(bufferIn);
+    printf("%s \n",getId(bufferIn));
     printf("Sensor Value:           ");
-    getVal(bufferIn);
+    printf("%s \n",getVal(bufferIn));
     printf("Controller Instruction: ");
-    getCInstr(bufferIn);
+    printf("%s \n",getCInstr(bufferIn));
     printf("Controller Data:        ");
-    getCData(bufferIn);
+    printf("%s \n",getCData(bufferIn));
     printf("Sensor Instruction:     ");
-    getSInstr(bufferIn);
+    printf("%s \n",getSInstr(bufferIn));
     printf("Sensor Data:            ");
-    getSData(bufferIn);
+    printf("%s \n",getSData(bufferIn));
     printf("--------------Packet--------------\n");
 }
 /*

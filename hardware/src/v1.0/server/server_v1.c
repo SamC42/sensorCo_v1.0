@@ -46,7 +46,8 @@ int main(int argc, char **argv[])
                 }
                 // Insert Command Received
                 if(bufferIn[14] == 'i'){ //0 right now for clarity 14
-                    printf("Instr: i\n");
+                    printf("Instruction:Insert\n");
+                    printf("Checking to see if sensor exists...\n");
                     char *id,*cInstr,*cData,*sInstr,*sData;
                     char *val;
                     id = malloc(4);
@@ -62,8 +63,15 @@ int main(int argc, char **argv[])
                     cData = getCData(bufferIn);
                     sInstr = getSInstr(bufferIn);
                     sData = getSData(bufferIn);
-                    insertSensor(id, val, cInstr, cData, sInstr, sData);
-                    write(sockFd,"eeeeeeeeeeeeeeeeee",buffSize);
+                    if(getCollSensors(id) == 1){
+                        printf("Sensor Exists!\n");
+                        write(sockFd,"eeeeeeeeeeeeeeeeee",buffSize);
+                    }
+                    else{
+                        printf("Sensor Does not Exist,\nInserting...\n");
+                        insertSensor(id, val, cInstr, cData, sInstr, sData);
+                        write(sockFd,"eeeeeeeeeeeeeeeeee",buffSize);
+                    }
 
 
                 }
@@ -75,9 +83,30 @@ int main(int argc, char **argv[])
                     id = getId(bufferIn);
                     val = getVal(bufferIn);
                     printf("Updating ID: %s with Val of: %s \n",id,val);
-                    updateSensor(id,val);
-                    write(sockFd,"uuuuuuuuuuuuuuuuuu",buffSize);
+                    if(getCollSensors(id) == 1){
+                        printf("Sensor Exists!\n");
+                        updateSensor(id,val);
+                        write(sockFd,"uuuuuuuuuuuuuuuuuu",buffSize);
+                    }
+                    else{
+                        printf("Sensor Does not Exist\n");
+                        write(sockFd,"uuuuuuuuuuuuuuuuuu",buffSize);
+                    }
+                    
 
+
+                }
+                // Test the get sensor
+                if(bufferIn[14] == 'g'){
+                    printf("Checking to see if sensor exists...\n");
+                    char *id;
+                    id = malloc(4);
+                    id = getId(bufferIn);
+                    if(getCollSensors(id) == 1)
+                        return printf("Sensor Exists!\n");
+                    else
+                        return printf("Sensor Does not Exist\n");
+                    //return getCollSensors();
 
                 }
                 else                       
