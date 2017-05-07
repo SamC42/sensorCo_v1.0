@@ -13,7 +13,7 @@ This is a Sensor system to practice with IOT based protocols. The model is based
 2. Start the Client
 	* `cd /hardware/src/v1.0/client`
 	* `./client -s`
-	*  Enter 12 bytes starting with 'e' (i.e. eeeeeeeeeeee)
+	*  Enter 16 bytes starting with 'e' (i.e. eeeeeeeeeeeeeeee)
 
 
 **What you are seeing currently is the client or 'sensor' sending data to the server. Currently working towards version 1**
