@@ -20,7 +20,7 @@ This is a Sensor system to practice with IOT based protocols. The model is based
 
 ### Version 1
 <hr>
-1. Working Server on the RPi 2
+1. Working Server on the RPi Two
 2. Working Sensor Sending Data to the RPi via wired connection
 
 #### Useful Help
