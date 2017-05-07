@@ -1,5 +1,4 @@
 # Sensor Co System
-<hr>
 This is a Sensor system to practice with IOT based protocols. The model is based on the CAN protocol.
 
 #### Ensure you have the following installed
@@ -16,7 +15,7 @@ This is a Sensor system to practice with IOT based protocols. The model is based
 	*  Enter 16 bytes starting with 'e' (i.e. eeeeeeeeeeeeeeee)
 
 
-**What you are seeing currently is the client or 'sensor' sending data to the server. Currently working towards version 1**
+**What you are seeing currently is the client or 'sensor' sending data to the server.**
 
 
 ### Version 1
@@ -24,8 +23,6 @@ This is a Sensor system to practice with IOT based protocols. The model is based
 1. Working Server on the RPi 2
 2. Working Sensor Sending Data to the RPi via wired connection
 
-
-<hr>
 #### Useful Help
 
 Command to insert data into a collection from a meteor mongo console
