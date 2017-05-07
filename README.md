@@ -1,5 +1,5 @@
 # Sensor Co System
-
+<hr>
 This is a Sensor system to practice with IOT based protocols. The model is based on the CAN protocol.
 
 #### Ensure you have the following installed
@@ -26,7 +26,7 @@ This is a Sensor system to practice with IOT based protocols. The model is based
 
 
 <hr>
-##### Useful Help
+#### Useful Help
 
 Command to insert data into a collection from a meteor mongo console
 db.sensors.insert({name: "Sense 1", val: "2"});
@@ -39,4 +39,3 @@ Installing on RPi
 
 1. Download Code from github
 2. Download Meteor: curl https://install.meteor.com/ | sh
-3. 
