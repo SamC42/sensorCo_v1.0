@@ -37,3 +37,8 @@ Installing on RPi
 
 1. Download Code from github
 2. Download Meteor: curl https://install.meteor.com/ | sh
+
+To Get Server Running:
+export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig
+pkg-config --modversion libbson-1.0
+pkg-config --modversion libmongoc-1.0
