@@ -43,7 +43,7 @@ int main(int argc, char **argv[])
                 if(bufferIn[0] == 'e'){
                        printPacket(bufferIn);
                        write(sockFd,"eeeeeeeeeeeeeeeeee",buffSize);
-                       syslog(LOG_INFO,"Wrote eee...!");
+                       //syslog(LOG_INFO,"Wrote eee...!");
                 }
                 // Insert Command Received
                 if(bufferIn[14] == 'i'){ //0 right now for clarity 14
