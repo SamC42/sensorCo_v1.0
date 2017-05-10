@@ -6,8 +6,8 @@
 #include <stdio.h>
 #include <unistd.h>
 #include <sys/socket.h>
-#include <sys/un.h>
-#include <string.h>
+#include <sys/un.h> 
+#include <string.h>  
 #include <stdlib.h>
 #include <stdbool.h>
 #include "./mongoDB_c/mongodb_api.c"
@@ -15,7 +15,7 @@
 #include "./packets/packet_parser.c"
 #include <syslog.h>
 
-int main(int argc, char **argv[])
+int main(int argc, char *argv[])
 {
         int sockFd = socket_conn();
 
@@ -25,7 +25,8 @@ int main(int argc, char **argv[])
         
         int readRes;
         bool quit = false; //Loop Lookinf for q to exit
-        int sensor_id, sensor_status, sensor_value;
+        //int sensor_id, sensor_status, sensor_value;
+        int writeReturnVal = 0;
 
         while(quit != true){
 
@@ -42,7 +43,7 @@ int main(int argc, char **argv[])
                 }
                 if(bufferIn[0] == 'e'){
                        printPacket(bufferIn);
-                       write(sockFd,"eeeeeeeeeeeeeeeeee",buffSize);
+                       writeReturnVal = write(sockFd,"eeeeeeeeeeeeeeeeee",buffSize);
                        //syslog(LOG_INFO,"Wrote eee...!");
                 }
                 // Insert Command Received
@@ -66,12 +67,12 @@ int main(int argc, char **argv[])
                     sData = getSData(bufferIn);
                     if(getCollSensors(id) == 1){
                         printf("Sensor Exists!\n");
-                        write(sockFd,"eeeeeeeeeeeeeeeeee",buffSize);
+                        writeReturnVal = write(sockFd,"eeeeeeeeeeeeeeeeee",buffSize);
                     }
                     else{
                         printf("Sensor Does not Exist,\nInserting...\n");
                         insertSensor(id, val, cInstr, cData, sInstr, sData);
-                        write(sockFd,"eeeeeeeeeeeeeeeeee",buffSize);
+                       writeReturnVal =  write(sockFd,"eeeeeeeeeeeeeeeeee",buffSize);
                     }
 
 
@@ -87,16 +88,16 @@ int main(int argc, char **argv[])
                     if(getCollSensors(id) == 1){
                         printf("Sensor Exists!\n");
                         updateSensor(id,val);
-                        write(sockFd,"uuuuuuuuuuuuuuuuuu",buffSize);
+                        writeReturnVal = write(sockFd,"uuuuuuuuuuuuuuuuuu",buffSize);
                     }
                     else{
                         printf("Sensor Does not Exist\n");
-                        write(sockFd,"uuuuuuuuuuuuuuuuuu",buffSize);
+                        writeReturnVal = write(sockFd,"uuuuuuuuuuuuuuuuuu",buffSize);
                     }
                     
 
 
-                }
+                }  
                 // Test the get sensor
                 if(bufferIn[14] == 'g'){
                     printf("Checking to see if sensor exists...\n");
@@ -111,7 +112,8 @@ int main(int argc, char **argv[])
 
                 }
                 else                       
-                        write(sockFd,"ssssssssssssssssss",buffSize);
+                        writeReturnVal = write(sockFd,"ssssssssssssssssss",buffSize);
+                printf("Write Return Value:%i \n",writeReturnVal);
                 }
 
         printf("\nClosing connection...\n");

@@ -7,7 +7,7 @@ This is the header file for the help file
 #define _help_menu_h
 
 
-void *printHelpMenu();
+void printHelpMenu();
 
 
 #endif

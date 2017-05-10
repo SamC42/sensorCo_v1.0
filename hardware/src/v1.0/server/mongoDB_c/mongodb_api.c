@@ -18,7 +18,6 @@ int insertSensor(char *sense_id,char *sense_val, char *cont_instr, char *cont_da
    mongoc_collection_t  *collection;
    bson_t               *insert;
    bson_error_t          error;
-   char                 *str;
 
    mongoc_init ();
    client = mongoc_client_new ("mongodb://127.0.0.1:3001");
@@ -53,7 +52,7 @@ int getCollSensors(char *sense_id){
    //Command to only get certain sensors
    //BSON_APPEND_UTF8(query, "name" ,"Name0");
 
-   cursor = mongoc_collection_find (collection, MONGOC_QUERY_NONE,0,0,0, query,NULL,NULL);
+   cursor = mongoc_collection_find_with_opts (collection, query,NULL,NULL);
 
    while (mongoc_cursor_next (cursor, &doc)){
     str = bson_as_json (doc, NULL);

@@ -149,7 +149,7 @@ char* getSData(char* sDataIn){
 Method to print the packet
 
 */
-char* printPacket(char* bufferIn){
+void printPacket(char* bufferIn){
 	printf("--------------Packet--------------\n");
     printf("Status ID:              ");
     printf("%s \n",getId(bufferIn));

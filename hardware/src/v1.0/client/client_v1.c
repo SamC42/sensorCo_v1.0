@@ -5,7 +5,7 @@
 */
 #include <stdio.h>
 #include <unistd.h>  
-#include <sys/socket.h>
+#include <sys/socket.h> 
 //#include <bluetooth/bluetooth.h>
 //#include <bluetooth/rfcomm.h>
 #include <string.h>
@@ -15,17 +15,16 @@
 #include "./buff_logic/buff_read.c"
 //#include "./socket_helpers/bluetoothSocketConnect.h"
 
-
+  
 
 int main(int argc, char *argv[])
 {
     int test = 1;
-    int sConn = 0;
-    int loopFlag = 0;
+    int sConn = 0; 
     if( argc == 1 || strcmp(argv[1],"-h") == 0 || strcmp(argv[1],"") == 0){
         printHelpMenu();
         return 0;
-
+ 
     }
     
     char resultW, resultR;
@@ -37,7 +36,6 @@ int main(int argc, char *argv[])
     int c;
     char bufferOut[buffSize];
 
-    int cntTime = 0;
     bool quit = false;
     //Test socket to connect to a Socket on the computer
     if(strcmp(argv[1],"-s") == 0){
@@ -58,7 +56,9 @@ int main(int argc, char *argv[])
        while(quit != true){
         printf("\nSend: ");
         //Get from Input Stream
-        fgets(buffer,buffSize,stdin); //Needs to be to so we have an ending to get past for loop
+        if(fgets(buffer,buffSize,stdin) !=NULL){
+
+        } //Needs to be to so we have an ending to get past for loop
         while((c = getchar()) != '\n' && c != EOF);   
         //QUIT
         if(buffer[0] == 'q'){

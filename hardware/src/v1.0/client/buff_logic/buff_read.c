@@ -14,14 +14,15 @@ Inputs:
 
 int read_buffer(int file_d, char* buffer, int count_size){
 	int readIn;
+    int retVal;
 	readIn = read(file_d,buffer,count_size);
 	if(readIn == 0){
     	printf("End Of File, Nothing was read (buff_read.c/ln 19)\n");
-        return 0;
+        retVal = 0;
     }
     if(readIn == -1){
         perror("Read Error");
-        return 0;
+        retVal = 0;
     }
     if(readIn > 0){
         //Closed
@@ -32,7 +33,7 @@ int read_buffer(int file_d, char* buffer, int count_size){
             //int num;
             //num = "0";
             //insertSensor(num, "Name 0");
-            return 1;
+            retVal = 1;
         }
         //Open
         else if(buffer[0] == '1'){
@@ -41,7 +42,7 @@ int read_buffer(int file_d, char* buffer, int count_size){
             //int num;
             //num = "1";
             //insertSensor(num,"Name 1");
-            return 1;
+            retVal = 1;
         }
         else if(*buffer == 'i'){
             //int num = "v";
@@ -49,7 +50,12 @@ int read_buffer(int file_d, char* buffer, int count_size){
         }
         else{
             printf("Recv: %s \n ",buffer);
-            return 1;
-        }
+            retVal = 1;
         }
     }
+    else{
+        printf("Read Error !> 0: %i \n",readIn);
+        retVal = 0;
+    }
+    return retVal;
+}
