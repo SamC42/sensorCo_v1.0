@@ -65,13 +65,13 @@ int main(int argc, char *argv[])
                     else{
                         printf("Sensor Does not Exist,\nInserting...\n");
                         insertSensor(id, val, cInstr, cData, sInstr, sData);
-                       writeReturnVal =  write(sockFd,"eeeeeeeeeeeeeeeeee",MAX_PACKET_INPUT);
+                        writeReturnVal =  write(sockFd,"eeeeeeeeeeeeeeeeee",MAX_PACKET_INPUT);
                     }
 
 
                 }
                 if(bufferIn[14] == 'u'){
-                    printf("Instr: i\n");
+                    printf("Instruction: update\n");
                     char *id, *val;
                     id = getId(bufferIn);
                     val = getVal(bufferIn);
@@ -103,7 +103,7 @@ int main(int argc, char *argv[])
                 }
                 else                       
                         writeReturnVal = write(sockFd,"ssssssssssssssssss",MAX_INPUT);
-                printf("Write Return Value:%i \n",writeReturnVal);
+                printf("Write Return Value: %i \n",writeReturnVal);
                 }
 
         printf("\nClosing connection...\n");
