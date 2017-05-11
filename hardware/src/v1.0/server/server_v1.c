@@ -15,13 +15,14 @@
 #include "./packets/packet_parser.c"
 #include <syslog.h>
 
+#define MAX_PACKET_INPUT 19
 int main(int argc, char *argv[])
 {
         int sockFd = socket_conn();
 
         //Define the bufferIn that will accept the data packet with length of 127 bytes       
-        int buffSize = 19; // Length of bufferIn in = 6
-        char bufferIn[buffSize];
+        //int buffSize = 19; // Length of bufferIn in = 6
+        char bufferIn[MAX_INPUT];//[buffSize];
         
         int readRes;
         bool quit = false; //Loop Lookinf for q to exit
@@ -31,7 +32,7 @@ int main(int argc, char *argv[])
         while(quit != true){
 
                 quit = false;
-                readRes = read(sockFd,bufferIn,buffSize);
+                readRes = read(sockFd,bufferIn,MAX_PACKET_INPUT);
                 printf("Naked Data from Client: %s \n",bufferIn);        
 
                 if(readRes < 0)
@@ -43,22 +44,14 @@ int main(int argc, char *argv[])
                 }
                 if(bufferIn[0] == 'e'){
                        printPacket(bufferIn);
-                       writeReturnVal = write(sockFd,"eeeeeeeeeeeeeeeeee",buffSize);
+                       writeReturnVal = write(sockFd,"eeeeeeeeeeeeeeeeee",MAX_PACKET_INPUT);
                        //syslog(LOG_INFO,"Wrote eee...!");
                 }
                 // Insert Command Received
                 if(bufferIn[14] == 'i'){ //0 right now for clarity 14
                     printf("Instruction:Insert\n");
                     printf("Checking to see if sensor exists...\n");
-                    char *id,*cInstr,*cData,*sInstr,*sData;
-                    char *val;
-                    id = malloc(4);
-                    val = malloc(4);
-                    cInstr = malloc(4);
-                    cData = malloc(4);
-                    sInstr = malloc(4);
-                    sData = malloc(4);
-
+                    char *id,*cInstr,*cData,*sInstr,*sData,*val;
                     id = getId(bufferIn);
                     val = getVal(bufferIn);
                     cInstr = getCInstr(bufferIn);
@@ -67,12 +60,12 @@ int main(int argc, char *argv[])
                     sData = getSData(bufferIn);
                     if(getCollSensors(id) == 1){
                         printf("Sensor Exists!\n");
-                        writeReturnVal = write(sockFd,"eeeeeeeeeeeeeeeeee",buffSize);
+                        writeReturnVal = write(sockFd,"eeeeeeeeeeeeeeeeee",MAX_PACKET_INPUT);
                     }
                     else{
                         printf("Sensor Does not Exist,\nInserting...\n");
                         insertSensor(id, val, cInstr, cData, sInstr, sData);
-                       writeReturnVal =  write(sockFd,"eeeeeeeeeeeeeeeeee",buffSize);
+                       writeReturnVal =  write(sockFd,"eeeeeeeeeeeeeeeeee",MAX_PACKET_INPUT);
                     }
 
 
@@ -80,19 +73,17 @@ int main(int argc, char *argv[])
                 if(bufferIn[14] == 'u'){
                     printf("Instr: i\n");
                     char *id, *val;
-                    id = malloc(4);
-                    val = malloc(4);
                     id = getId(bufferIn);
                     val = getVal(bufferIn);
                     printf("Updating ID: %s with Val of: %s \n",id,val);
                     if(getCollSensors(id) == 1){
                         printf("Sensor Exists!\n");
                         updateSensor(id,val);
-                        writeReturnVal = write(sockFd,"uuuuuuuuuuuuuuuuuu",buffSize);
+                        writeReturnVal = write(sockFd,"uuuuuuuuuuuuuuuuuu",MAX_PACKET_INPUT);
                     }
                     else{
                         printf("Sensor Does not Exist\n");
-                        writeReturnVal = write(sockFd,"uuuuuuuuuuuuuuuuuu",buffSize);
+                        writeReturnVal = write(sockFd,"uuuuuuuuuuuuuuuuuu",MAX_PACKET_INPUT);
                     }
                     
 
@@ -102,7 +93,6 @@ int main(int argc, char *argv[])
                 if(bufferIn[14] == 'g'){
                     printf("Checking to see if sensor exists...\n");
                     char *id;
-                    id = malloc(4);
                     id = getId(bufferIn);
                     if(getCollSensors(id) == 1)
                         return printf("Sensor Exists!\n");
@@ -112,7 +102,7 @@ int main(int argc, char *argv[])
 
                 }
                 else                       
-                        writeReturnVal = write(sockFd,"ssssssssssssssssss",buffSize);
+                        writeReturnVal = write(sockFd,"ssssssssssssssssss",MAX_INPUT);
                 printf("Write Return Value:%i \n",writeReturnVal);
                 }
 
